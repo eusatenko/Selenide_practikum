@@ -1,5 +1,8 @@
 import com.codeborne.selenide.Configuration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selectors.byClassName;
@@ -23,5 +26,14 @@ public class AutoTest {
 
         $(byClassName("header__user")).shouldHave(exactText("acalo3463@kixotic.com"));
 
+    }
+
+    @Test
+    public void test2() {
+        WebDriverManager.chromedriver().setup();
+        ChromeDriver chromeDriver = new ChromeDriver();
+        chromeDriver.get("https://the-internet.herokuapp.com/shadowdom");
+        chromeDriver.findElement(By.cssSelector("h1")).getText();
+        chromeDriver.quit();
     }
 }
