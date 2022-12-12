@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Configuration;
 import org.junit.Test;
 
 import static com.codeborne.selenide.Condition.exactText;
@@ -9,7 +10,8 @@ public class AutoTest {
 
     @Test
     public void authTest() {
-
+        Configuration.screenshots = false;
+        Configuration.savePageSource = false;
         // открывается страница и создаётся экземпляр класса страницы
         LoginPageMestoSelenide loginPage =
                 open("https://qa-mesto.praktikum-services.ru/",
